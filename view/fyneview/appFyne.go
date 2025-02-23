@@ -8,12 +8,26 @@ import (
 	"fyne.io/fyne/v2/container"
 )
 
+// глобальные переменные
+type globalVariables struct {
+	w           fyne.Window
+	splitGlobal *container.Split
+}
+
+// глобальные флаги
+type globalFlags struct {
+	beginStopwatch bool
+}
+
+var g_v globalVariables
+var g_f globalFlags
+
 func App() {
 	a := app.NewWithID("Main Journal")
-	w := a.NewWindow("Main Journal v 0.0.1")
-	w.Resize(fyne.NewSize(800, 600)) // размер окна
+	g_v.w = a.NewWindow("Main Journal v 0.0.1")
+	g_v.w.Resize(fyne.NewSize(480, 300)) // размер окна
 	//w.SetFixedSize(true)
-	w.CenterOnScreen()
+	g_v.w.CenterOnScreen()
 
 	// Создаем два виджета, которые будут размещены в разделяемых панелях
 
@@ -22,11 +36,11 @@ func App() {
 	cont := createSideBar()
 
 	// Создаем контейнер с разделяемыми панелями
-	split := container.NewHSplit(cont, right)
-	split.SetOffset(0.01) // Устанавливаем разделитель в середину
+	g_v.splitGlobal = container.NewHSplit(cont, right)
+	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину
 
 	// Устанавливаем контейнер в окно
-	w.SetContent(split)
+	g_v.w.SetContent(g_v.splitGlobal)
 
-	w.ShowAndRun()
+	g_v.w.ShowAndRun()
 }
