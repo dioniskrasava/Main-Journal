@@ -1,9 +1,8 @@
 package fyneview
 
 import (
-	"fmt"
 	"mainjournal/applications/fixact"
-	stopwatch "mainjournal/applications/stpwtch"
+	"mainjournal/applications/stopwatch"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -22,23 +21,15 @@ func createSideBar() *fyne.Container {
 }
 
 func showStopwatch() {
-	if !g_f.beginStopwatch {
-		fmt.Println("Первый запуск секундомера")
-		g_f.beginStopwatch = true
-		g_v.splitGlobal.Trailing = stopwatch.NewApp()
-		g_v.w.Resize(fyne.NewSize(400, 110))
-		g_v.splitGlobal.Refresh()
-	} else {
-		fmt.Println("Не первый запуск секундомера")
-		g_v.splitGlobal.Trailing = stopwatch.NotNewApp()
-		g_v.w.Resize(fyne.NewSize(400, 110))
-		g_v.splitGlobal.Refresh()
-	}
-
+	g_v.splitGlobal.Trailing = stopwatch.NewApp()
+	g_v.w.Resize(fyne.NewSize(480, 300))
+	g_v.w.SetFixedSize(false)
+	g_v.splitGlobal.Refresh()
 }
 
 func showFixact() {
 	g_v.splitGlobal.Trailing = fixact.NewApp()
 	g_v.w.Resize(fyne.NewSize(480, 300))
+	g_v.w.SetFixedSize(true)
 	g_v.splitGlobal.Refresh()
 }
