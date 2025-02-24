@@ -1,7 +1,9 @@
 package fyneview
 
 import (
+	"database/sql"
 	"mainjournal/applications/fixact"
+	dataApp "mainjournal/model"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
@@ -10,8 +12,10 @@ import (
 
 // глобальные переменные
 type globalVariables struct {
+	a           fyne.App
 	w           fyne.Window
 	splitGlobal *container.Split
+	db          *sql.DB
 }
 
 // глобальные флаги
@@ -23,16 +27,20 @@ var g_v globalVariables
 var g_f globalFlags
 
 func App() {
-	a := app.NewWithID("Main Journal")
-	g_v.w = a.NewWindow("Main Journal v 0.0.1")
+	g_v.a = app.NewWithID("Main Journal")
+	g_v.w = g_v.a.NewWindow("Main Journal v 0.0.1")
 	g_v.w.Resize(fyne.NewSize(480, 300)) // размер окна
 	//w.SetFixedSize(true)
 	g_v.w.CenterOnScreen()
 
+	// СОЗДАЕМ ОБЩУЮ БАЗУ ДАННЫХ ПРИЛОЖЕНИЯ
+	g_v.db = dataApp.CreateDB()
+	defer g_v.db.Close() // не забудем закрыть вместе с приложением
+
 	// Создаем два виджета, которые будут размещены в разделяемых панелях
 
-	right := fixact.NewApp()
-
+	// БАГ - приложение ФИКСАКТ инициализируется МНОГО РАЗ!!! Нужно написать флаг
+	right := fixact.NewApp(g_v.db)
 	cont := createSideBar()
 
 	// Создаем контейнер с разделяемыми панелями

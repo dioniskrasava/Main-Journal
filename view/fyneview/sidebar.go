@@ -13,10 +13,15 @@ import (
 // возвращает боковую панель главного приложения
 // в виде контейнера файн
 func createSideBar() *fyne.Container {
-	but1 := widget.NewButtonWithIcon("", theme.ContentAddIcon(), func() { showFixact() })
-	but2 := widget.NewButtonWithIcon("", theme.ContentClearIcon(), func() { showStopwatch() })
+	fixactButt := widget.NewButton("🅵", func() { showFixact() })
+	stopwatButt := widget.NewButton("🆂", func() { showStopwatch() })
 
-	cont := container.NewVBox(but1, but2)
+	labelSepar := widget.NewLabel("🅃\n🄷\n🄴\n🄼\n🄴")
+
+	butLThem := widget.NewButton("🅻", func() { setLightTheme() }) // Light theme
+	butDThem := widget.NewButton("🅳", func() { setDarkTheme() })  // Dark theme
+
+	cont := container.NewVBox(fixactButt, stopwatButt, labelSepar, butLThem, butDThem)
 	return cont
 }
 
@@ -28,8 +33,16 @@ func showStopwatch() {
 }
 
 func showFixact() {
-	g_v.splitGlobal.Trailing = fixact.NewApp()
+	g_v.splitGlobal.Trailing = fixact.NewApp(g_v.db)
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	g_v.w.SetFixedSize(true)
 	g_v.splitGlobal.Refresh()
+}
+
+func setLightTheme() {
+	g_v.a.Settings().SetTheme(theme.LightTheme())
+}
+
+func setDarkTheme() {
+	g_v.a.Settings().SetTheme(theme.DarkTheme())
 }

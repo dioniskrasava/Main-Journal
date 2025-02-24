@@ -1,0 +1,8 @@
+Символы юникод
+https://www.bdbd.ru/likbez/samostoyatelnoe-prodvizhenie/tablitsa_simvolov_yunikoda_dlya_saytov/
+
+
+https://symbl.cc/ru/unicode-table/#transport-and-map-symbols
+
+
+https://symbl.cc/ru/unicode-table/#enclosed-alphanumeric-supplement          БУКВЫ  (1F100-1F1FF)

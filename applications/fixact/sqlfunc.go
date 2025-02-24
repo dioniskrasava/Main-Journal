@@ -8,7 +8,7 @@ import (
 	_ "github.com/mattn/go-sqlite3"
 )
 
-func createTableInDB() {
+func createTableInDB(db *sql.DB) {
 
 	// Создание таблицы, если она не существует
 	createTableSQL := `CREATE TABLE IF NOT EXISTS activities (
@@ -25,32 +25,7 @@ func createTableInDB() {
 	}
 }
 
-func createDB() {
-	var err error
-
-	if pathFileDB == "" {
-		// Если путь к базе данных не указан, используем путь по умолчанию
-		db, err = sql.Open("sqlite3", "./activities.db")
-		if err != nil {
-			log.Fatal(err)
-		}
-	} else {
-		// Если путь к базе данных указан, используем его
-		db, err = sql.Open("sqlite3", pathFileDB)
-		if err != nil {
-			log.Fatal(err)
-		}
-	}
-
-	// Проверяем подключение к базе данных
-	err = db.Ping()
-	if err != nil {
-		log.Fatal("Failed to ping database:", err)
-	}
-
-}
-
-func addAct(w Widgets) {
+func addAct(w Widgets, db *sql.DB) {
 	activity := Activity{
 		Type:      w.activityType.Selected,
 		StartTime: w.startTime.Text,
