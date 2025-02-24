@@ -2,6 +2,7 @@ package fixact
 
 import (
 	"database/sql"
+	"fmt"
 	"mainjournal/applications/fixact/pos"
 
 	"fyne.io/fyne/v2"
@@ -12,7 +13,7 @@ import (
 
 func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	// Элементы интерфейса
-	activityType := widget.NewSelect([]string{"Книга", "Код", "Видео"}, func(value string) {})
+	activityType := widget.NewSelect([]string{"Книга", "Код", "Видео"}, func(value string) { activityTypeEvent(value) })
 	activityType.PlaceHolder = "Выбери активность"
 
 	startTime := widget.NewEntry()
@@ -53,4 +54,24 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	pos.AddRow(globContainer, WIDTH, h6, widget.NewLabel(""), addButton)
 
 	return globContainer
+}
+
+// activityType EVENTS (CLCIK)
+func activityTypeEvent(value string) {
+	fmt.Println("Выбран ", value)
+}
+
+// ФУНКЦИИ ДЛЯ РАБОТЫ ВСПОМОГАТЕЛЬНЫХ КНОПОК
+// ДЛЯ НИХ НУЖНО ПИСАТЬ ГЛОБАЛЬНЫЙ ОБЪЕКТ ВИДЖЕТОВ ПРИЛОЕЖНИЯ, ЧТОБЫ В ЭТИХ ФУНКЦИЯХ
+// СЧИТЫВАТЬ ЗНАЧЕНИЯ С ЭТИХ ВИДЖЕТОВ И ПОМЕЩАТЬ ИХ В AFixD (объект состояний полей ввода ФИКС-АКТА)
+func btnSupp1Event() {
+
+}
+
+func btnSupp2Event() {
+
+}
+
+func btnSupp3Event() {
+
 }

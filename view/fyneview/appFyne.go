@@ -20,7 +20,7 @@ type globalVariables struct {
 
 // глобальные флаги
 type globalFlags struct {
-	beginStopwatch bool
+	beginFixAct bool
 }
 
 var g_v globalVariables
@@ -30,7 +30,7 @@ func App() {
 	g_v.a = app.NewWithID("Main Journal")
 	g_v.w = g_v.a.NewWindow("Main Journal v 0.0.1")
 	g_v.w.Resize(fyne.NewSize(480, 300)) // размер окна
-	//w.SetFixedSize(true)
+	g_v.w.SetFixedSize(true)
 	g_v.w.CenterOnScreen()
 
 	// СОЗДАЕМ ОБЩУЮ БАЗУ ДАННЫХ ПРИЛОЖЕНИЯ
@@ -40,13 +40,11 @@ func App() {
 	// Создаем два виджета, которые будут размещены в разделяемых панелях
 
 	// БАГ - приложение ФИКСАКТ инициализируется МНОГО РАЗ!!! Нужно написать флаг
-	right := fixact.NewApp(g_v.db)
-	cont := createSideBar()
-
+	rightContApp := fixact.NewApp(g_v.db) // В ДАЛЬНЕЙШЕМ ЗАМЕНИТ НА ЭКРАН ПРИВЕТСТВИЯ
+	leftContApp := createSideBar()
 	// Создаем контейнер с разделяемыми панелями
-	g_v.splitGlobal = container.NewHSplit(cont, right)
+	g_v.splitGlobal = container.NewHSplit(leftContApp, rightContApp)
 	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину
-
 	// Устанавливаем контейнер в окно
 	g_v.w.SetContent(g_v.splitGlobal)
 
