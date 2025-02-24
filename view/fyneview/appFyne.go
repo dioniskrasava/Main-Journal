@@ -10,12 +10,12 @@ import (
 	"fyne.io/fyne/v2/container"
 )
 
-// глобальные переменные
+// структура глобальных переменных
 type globalVariables struct {
 	a           fyne.App
 	w           fyne.Window
 	splitGlobal *container.Split
-	db          *sql.DB
+	db          *sql.DB // объект базы данных приложения
 }
 
 // глобальные флаги
@@ -23,7 +23,7 @@ type globalFlags struct {
 	beginFixAct bool
 }
 
-var g_v globalVariables
+var g_v globalVariables // объект глобальных переменных
 var g_f globalFlags
 
 func App() {
@@ -35,17 +35,13 @@ func App() {
 
 	// СОЗДАЕМ ОБЩУЮ БАЗУ ДАННЫХ ПРИЛОЖЕНИЯ
 	g_v.db = dataApp.CreateDB()
-	defer g_v.db.Close() // не забудем закрыть вместе с приложением
-
-	// Создаем два виджета, которые будут размещены в разделяемых панелях
+	defer g_v.db.Close()
 
 	// БАГ - приложение ФИКСАКТ инициализируется МНОГО РАЗ!!! Нужно написать флаг
 	rightContApp := fixact.NewApp(g_v.db) // В ДАЛЬНЕЙШЕМ ЗАМЕНИТ НА ЭКРАН ПРИВЕТСТВИЯ
 	leftContApp := createSideBar()
-	// Создаем контейнер с разделяемыми панелями
 	g_v.splitGlobal = container.NewHSplit(leftContApp, rightContApp)
 	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину
-	// Устанавливаем контейнер в окно
 	g_v.w.SetContent(g_v.splitGlobal)
 
 	g_v.w.ShowAndRun()

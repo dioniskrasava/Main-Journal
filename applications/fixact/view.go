@@ -24,6 +24,7 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	comment := widget.NewMultiLineEntry()
 	addButton := widget.NewButton("Добавить активность", func() { addAct(widgtsApp, db) })
 
+	// ДУБЛИРУЕМ СОЗДАННЫЕ ВИДЖЕТЫ В ГЛОБАЛЬНУЮ ПЕРЕМЕННУЮ
 	widgtsApp = Widgets{
 		activityType: activityType,
 		startTime:    startTime,
@@ -33,7 +34,7 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 		addButton:    addButton,
 	}
 
-	btnSupp1 := widget.NewButton("🞴", func() { startTime.SetText(getNow()) })
+	btnSupp1 := widget.NewButton("🞴", func() { btnSupp1Event(widgtsApp) })
 	btnSupp2 := widget.NewButton("🞴", func() { endTime.SetText(getNow()) })
 	btnSupp3 := widget.NewButton("🞴", func() { totalTime.SetText(getActTime(endTime.Text, startTime.Text)) })
 
@@ -64,7 +65,10 @@ func activityTypeEvent(value string) {
 // ФУНКЦИИ ДЛЯ РАБОТЫ ВСПОМОГАТЕЛЬНЫХ КНОПОК
 // ДЛЯ НИХ НУЖНО ПИСАТЬ ГЛОБАЛЬНЫЙ ОБЪЕКТ ВИДЖЕТОВ ПРИЛОЕЖНИЯ, ЧТОБЫ В ЭТИХ ФУНКЦИЯХ
 // СЧИТЫВАТЬ ЗНАЧЕНИЯ С ЭТИХ ВИДЖЕТОВ И ПОМЕЩАТЬ ИХ В AFixD (объект состояний полей ввода ФИКС-АКТА)
-func btnSupp1Event() {
+func btnSupp1Event(widgtsApp Widgets) {
+	widgtsApp.startTime.SetText(getNow())
+	appFieldVal = readFieldApp(widgtsApp)
+	fmt.Println(appFieldVal)
 
 }
 

@@ -1,8 +1,8 @@
 package fyneview
 
 import (
+	"mainjournal/applications/app2"
 	"mainjournal/applications/fixact"
-	"mainjournal/applications/stopwatch"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -26,7 +26,7 @@ func createSideBar() *fyne.Container {
 }
 
 func showStopwatch() {
-	g_v.splitGlobal.Trailing = stopwatch.NewApp()
+	g_v.splitGlobal.Trailing = app2.NewApp()
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	g_v.w.SetFixedSize(false)
 	g_v.splitGlobal.Refresh()

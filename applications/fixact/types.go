@@ -9,7 +9,7 @@ const (
 	HEIGHT float32 = 350
 )
 
-// newApp
+// структура для сбора данных перед отправкой в БАЗУ ДАННЫХ
 type Activity struct {
 	Type      string
 	StartTime string
@@ -29,6 +29,7 @@ type Widgets struct {
 }
 
 var widgtsApp Widgets = Widgets{}
+var appFieldVal = Activity{}
 
 // ПЕРЕМЕННАЯ БАЗЫ ДАННЫХ ГЛОБАЛЬНАЯ НА УРОВНЕ ПАКЕТА - ВОЗМОЖНО ЭТО НЕ ПРАВИЛЬНО
 // НО К СОЖАЛЕНИЮ ПОКА ЭТО ОДИН ИЗ УДОБНЫХ ВАРИАНТОВ ЭТОГО КОДА ИНАЧЕ НУЖНО БЫЛО БЫ
