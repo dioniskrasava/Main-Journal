@@ -35,8 +35,8 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	}
 
 	btnSupp1 := widget.NewButton("🞴", func() { btnSupp1Event(widgtsApp) })
-	btnSupp2 := widget.NewButton("🞴", func() { endTime.SetText(getNow()) })
-	btnSupp3 := widget.NewButton("🞴", func() { totalTime.SetText(getActTime(endTime.Text, startTime.Text)) })
+	btnSupp2 := widget.NewButton("🞴", func() { btnSupp2Event(widgtsApp) })
+	btnSupp3 := widget.NewButton("🞴", func() { btnSupp3Event(widgtsApp) })
 
 	globContainer := container.NewWithoutLayout()
 
@@ -72,10 +72,14 @@ func btnSupp1Event(widgtsApp Widgets) {
 
 }
 
-func btnSupp2Event() {
-
+func btnSupp2Event(widgtsApp Widgets) {
+	widgtsApp.endTime.SetText(getNow())
+	appFieldVal = readFieldApp(widgtsApp)
+	fmt.Println(appFieldVal)
 }
 
-func btnSupp3Event() {
-
+func btnSupp3Event(widgtsApp Widgets) {
+	widgtsApp.totalTime.SetText(getActTime(widgtsApp.endTime.Text, widgtsApp.startTime.Text))
+	appFieldVal = readFieldApp(widgtsApp)
+	fmt.Println(appFieldVal)
 }

@@ -28,7 +28,7 @@ type Widgets struct {
 	addButton    *widget.Button
 }
 
-var widgtsApp Widgets = Widgets{}
+var widgtsApp Widgets = Widgets{} // виджеты FixAct
 var appFieldVal = Activity{}
 
 // ПЕРЕМЕННАЯ БАЗЫ ДАННЫХ ГЛОБАЛЬНАЯ НА УРОВНЕ ПАКЕТА - ВОЗМОЖНО ЭТО НЕ ПРАВИЛЬНО

@@ -37,35 +37,3 @@ func addAct(w Widgets, db *sql.DB) {
 	cleanFielApp(w)
 	fmt.Println("Активность добавлена!")
 }
-
-// возвращает значения полей приложения
-func readFieldApp(w Widgets) Activity {
-	activity := Activity{
-		Type:      w.activityType.Selected,
-		StartTime: w.startTime.Text,
-		EndTime:   w.endTime.Text,
-		TotalTime: w.totalTime.Text,
-		Comment:   w.comment.Text,
-	}
-	return activity
-}
-
-// очистить поля приложения
-func cleanFielApp(w Widgets) {
-	// Очистка полей после добавления
-	w.activityType.SetSelected("")
-	w.startTime.SetText("")
-	w.endTime.SetText("")
-	w.totalTime.SetText("")
-	w.comment.SetText("")
-}
-
-// записывает значения глобальной переменной
-// в поля приложения
-func writeFieldApp(w Widgets) {
-	w.activityType.SetSelected(appFieldVal.Type)
-	w.startTime.SetText(appFieldVal.StartTime)
-	w.endTime.SetText(appFieldVal.EndTime)
-	w.totalTime.SetText(appFieldVal.TotalTime)
-	w.comment.SetText(appFieldVal.Comment)
-}

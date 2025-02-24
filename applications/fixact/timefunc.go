@@ -32,7 +32,6 @@ func getActTime(time1 string, time2 string) string {
 	diff := t1.Sub(t2)
 
 	// Вывод результата
-	fmt.Printf("Разница между %s и %s составляет %v\n", time1, time2, diff)
 
 	return formatDuration(diff)
 }

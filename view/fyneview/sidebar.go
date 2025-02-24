@@ -6,7 +6,6 @@ import (
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
-	"fyne.io/fyne/v2/theme"
 	"fyne.io/fyne/v2/widget"
 )
 
@@ -33,16 +32,14 @@ func showStopwatch() {
 }
 
 func showFixact() {
-	g_v.splitGlobal.Trailing = fixact.NewApp(g_v.db)
+	if !g_f.beginFixAct {
+		g_v.splitGlobal.Trailing = fixact.NewApp(g_v.db)
+		g_f.beginFixAct = true
+	} else {
+		g_v.splitGlobal.Trailing = fixact.OldApp(g_v.db)
+	}
+
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	g_v.w.SetFixedSize(true)
 	g_v.splitGlobal.Refresh()
-}
-
-func setLightTheme() {
-	g_v.a.Settings().SetTheme(theme.LightTheme())
-}
-
-func setDarkTheme() {
-	g_v.a.Settings().SetTheme(theme.DarkTheme())
 }

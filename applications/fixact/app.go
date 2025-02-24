@@ -11,5 +11,10 @@ func NewApp(db *sql.DB) fyne.CanvasObject {
 	createTableInDB(db)
 	content := createInterfaceApp(db)
 	return content
+}
 
+func OldApp(db *sql.DB) fyne.CanvasObject {
+	content := createInterfaceApp(db)
+	writeFieldApp(widgtsApp) // записываем последние значения
+	return content
 }
