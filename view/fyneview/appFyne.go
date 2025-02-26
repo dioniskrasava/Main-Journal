@@ -39,6 +39,10 @@ func App() {
 
 	// БАГ - приложение ФИКСАКТ инициализируется МНОГО РАЗ!!! Нужно написать флаг
 	rightContApp := fixact.NewApp(g_v.db) // В ДАЛЬНЕЙШЕМ ЗАМЕНИТ НА ЭКРАН ПРИВЕТСТВИЯ
+	// ВРЕМЕННАЯ ЗАГЛУШКА для того, чтобы перерисовка работала корректно
+	// оставить костыль до тех пор пока не реализуем экран приветствия
+	g_f.beginFixAct = true
+
 	leftContApp := createSideBar()
 	g_v.splitGlobal = container.NewHSplit(leftContApp, rightContApp)
 	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину

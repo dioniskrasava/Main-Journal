@@ -17,8 +17,6 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	activityType.PlaceHolder = "Выбери активность"
 
 	startTime := widget.NewEntry()
-	startTime.SetText(getNow())
-
 	endTime := widget.NewEntry()
 	totalTime := widget.NewEntry()
 	comment := widget.NewMultiLineEntry()
@@ -37,6 +35,7 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	btnSupp1 := widget.NewButton("🞴", func() { btnSupp1Event(widgtsApp) })
 	btnSupp2 := widget.NewButton("🞴", func() { btnSupp2Event(widgtsApp) })
 	btnSupp3 := widget.NewButton("🞴", func() { btnSupp3Event(widgtsApp) })
+	comment.OnChanged = func(text string) { commentFielChanged(text) }
 
 	globContainer := container.NewWithoutLayout()
 
@@ -80,6 +79,13 @@ func btnSupp2Event(widgtsApp Widgets) {
 
 func btnSupp3Event(widgtsApp Widgets) {
 	widgtsApp.totalTime.SetText(getActTime(widgtsApp.endTime.Text, widgtsApp.startTime.Text))
+	appFieldVal = readFieldApp(widgtsApp)
+	fmt.Println(appFieldVal)
+}
+
+// вызывается если пользователь что-то написал в поле комментариев
+func commentFielChanged(text string) {
+	fmt.Printf("Text changed: %s\n", text)
 	appFieldVal = readFieldApp(widgtsApp)
 	fmt.Println(appFieldVal)
 }

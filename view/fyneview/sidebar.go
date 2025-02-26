@@ -1,8 +1,10 @@
 package fyneview
 
 import (
+	"log"
 	"mainjournal/applications/app2"
 	"mainjournal/applications/fixact"
+	settingapp "mainjournal/applications/setting_app"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
@@ -13,18 +15,18 @@ import (
 // в виде контейнера файн
 func createSideBar() *fyne.Container {
 	fixactButt := widget.NewButton("🅵", func() { showFixact() })
-	stopwatButt := widget.NewButton("🆂", func() { showStopwatch() })
+	stopwatButt := widget.NewButton("🆂", func() { showApp2() })
 
-	labelSepar := widget.NewLabel("🅃\n🄷\n🄴\n🄼\n🄴")
+	// прокладка - для того чтобы кнопку настроек сделать внизу
+	labelSepar := widget.NewLabel("\n\n\n\n\n\n")
 
-	butLThem := widget.NewButton("🅻", func() { setLightTheme() }) // Light theme
-	butDThem := widget.NewButton("🅳", func() { setDarkTheme() })  // Dark theme
+	settingsAppButt := widget.NewButton("Se", func() { showSettingsApp() })
 
-	cont := container.NewVBox(fixactButt, stopwatButt, labelSepar, butLThem, butDThem)
+	cont := container.NewVBox(fixactButt, stopwatButt, labelSepar, settingsAppButt)
 	return cont
 }
 
-func showStopwatch() {
+func showApp2() {
 	g_v.splitGlobal.Trailing = app2.NewApp()
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	g_v.w.SetFixedSize(false)
@@ -33,13 +35,22 @@ func showStopwatch() {
 
 func showFixact() {
 	if !g_f.beginFixAct {
+		log.Println("ОТРИСОВАЛИ НОВОЕ ОКНО")
 		g_v.splitGlobal.Trailing = fixact.NewApp(g_v.db)
 		g_f.beginFixAct = true
 	} else {
+		log.Println("ОТРИСОВАЛИ СТАРОЕ ОКНО")
 		g_v.splitGlobal.Trailing = fixact.OldApp(g_v.db)
 	}
 
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	g_v.w.SetFixedSize(true)
+	g_v.splitGlobal.Refresh()
+}
+
+func showSettingsApp() {
+	g_v.splitGlobal.Trailing = settingapp.NewApp(g_v.a)
+	g_v.w.Resize(fyne.NewSize(480, 300))
+	g_v.w.SetFixedSize(false)
 	g_v.splitGlobal.Refresh()
 }
