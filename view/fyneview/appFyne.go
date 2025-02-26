@@ -5,6 +5,8 @@ import (
 	"mainjournal/applications/fixact"
 	dataApp "mainjournal/model"
 
+	fyneview_utils "mainjournal/view/fyneview/utils"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"
 	"fyne.io/fyne/v2/container"
@@ -45,6 +47,10 @@ func App() {
 
 	leftContApp := createSideBar()
 	g_v.splitGlobal = container.NewHSplit(leftContApp, rightContApp)
+
+	// Отдаем глобальный объект окна приложения в другой пакет
+	fyneview_utils.GetMainAppContainer(g_v.splitGlobal) // ВАЖНЫЙ МОМЕНТ !!!
+
 	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину
 	g_v.w.SetContent(g_v.splitGlobal)
 

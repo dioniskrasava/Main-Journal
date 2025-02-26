@@ -20,8 +20,8 @@ func createSideBar() *fyne.Container {
 	// прокладка - для того чтобы кнопку настроек сделать внизу
 	labelSepar := widget.NewLabel("\n\n\n\n\n\n")
 
-	settingsAppButt := widget.NewButton("Se", func() { showSettingsApp() })
-
+	settingsAppButt := widget.NewButton("☰", func() { showSettingsApp() })
+	//▤ ℵ ▢ ☰
 	cont := container.NewVBox(fixactButt, stopwatButt, labelSepar, settingsAppButt)
 	return cont
 }
@@ -29,7 +29,7 @@ func createSideBar() *fyne.Container {
 func showApp2() {
 	g_v.splitGlobal.Trailing = app2.NewApp()
 	g_v.w.Resize(fyne.NewSize(480, 300))
-	g_v.w.SetFixedSize(false)
+	//g_v.w.SetFixedSize(false)
 	g_v.splitGlobal.Refresh()
 }
 
@@ -51,6 +51,6 @@ func showFixact() {
 func showSettingsApp() {
 	g_v.splitGlobal.Trailing = settingapp.NewApp(g_v.a)
 	g_v.w.Resize(fyne.NewSize(480, 300))
-	g_v.w.SetFixedSize(false)
+	//g_v.w.SetFixedSize(false)
 	g_v.splitGlobal.Refresh()
 }

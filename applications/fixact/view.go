@@ -32,6 +32,7 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 		addButton:    addButton,
 	}
 
+	btnSupp0 := widget.NewButton("☰", func() { drawTheSettingsWindow() })
 	btnSupp1 := widget.NewButton("🞴", func() { btnSupp1Event(widgtsApp) })
 	btnSupp2 := widget.NewButton("🞴", func() { btnSupp2Event(widgtsApp) })
 	btnSupp3 := widget.NewButton("🞴", func() { btnSupp3Event(widgtsApp) })
@@ -46,7 +47,7 @@ func createInterfaceApp(db *sql.DB) (content *fyne.Container) {
 	h5 := float32(170)
 	h6 := float32(250)
 
-	pos.AddRow(globContainer, WIDTH, h1, widget.NewLabel("Тип активности:"), activityType)
+	pos.AddRow(globContainer, WIDTH, h1, widget.NewLabel("Тип активности:"), activityType, btnSupp0)
 	pos.AddRow(globContainer, WIDTH, h2, widget.NewLabel("Время начала:"), startTime, btnSupp1)
 	pos.AddRow(globContainer, WIDTH, h3, widget.NewLabel("Время окончания:"), endTime, btnSupp2)
 	pos.AddRow(globContainer, WIDTH, h4, widget.NewLabel("Общее время:"), totalTime, btnSupp3)
