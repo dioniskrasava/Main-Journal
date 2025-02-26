@@ -10,12 +10,18 @@ import (
 
 func NewApp(a fyne.App) *fyne.Container {
 
-	nameApplicationLabel := widget.NewLabel("Setting applications")
-	themeLabel := widget.NewLabel("🅃🄷🄴🄼🄴")
+	nameApplicationLabel := widget.NewLabel("Настройки приложения \n\n\nТемы :")
+	//themeLabel := widget.NewLabel("🅃🄷🄴🄼🄴")
 
-	buttLightTheme := widget.NewButton("Light", func() { fyneview_utils.SetLightTheme(a) })
-	buttDarkTheme := widget.NewButton("Dark", func() { fyneview_utils.SetDarkTheme(a) })
+	buttLightTheme := widget.NewButton("Светлая", func() { fyneview_utils.SetLightTheme(a) })
+	buttDarkTheme := widget.NewButton("Тёмная", func() { fyneview_utils.SetDarkTheme(a) })
+	contButThem := container.NewCenter(container.NewHBox(buttLightTheme, buttDarkTheme))
 
-	cont := container.NewVBox(nameApplicationLabel, themeLabel, buttLightTheme, buttDarkTheme)
+	labelLang := widget.NewLabel("Языки:")
+	buttEng := widget.NewButton("Английский", func() {})
+	buttRus := widget.NewButton("Русский", func() {})
+	contButLang := container.NewCenter(container.NewHBox(buttEng, buttRus))
+
+	cont := container.NewVBox(nameApplicationLabel, contButThem, labelLang, contButLang)
 	return cont
 }
