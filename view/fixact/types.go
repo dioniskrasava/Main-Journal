@@ -1,7 +1,7 @@
 package fixact
 
 import (
-	fyneview_utils "mainjournal/view/fyneview/utils"
+	fyneview_utils "mainjournal/view/utils"
 )
 
 const (

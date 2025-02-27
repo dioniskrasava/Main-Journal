@@ -1,6 +1,6 @@
 package main
 
-import "mainjournal/view/fyneview"
+import fyneview "mainjournal/view/main"
 
 func main() {
 	fyneview.App()

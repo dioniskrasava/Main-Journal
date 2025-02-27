@@ -3,8 +3,8 @@ package fixact
 import (
 	"database/sql"
 	"fmt"
-	"mainjournal/applications/fixact/pos"
-	fyneview_utils "mainjournal/view/fyneview/utils"
+	"mainjournal/view/fixact/pos"
+	fyneview_utils "mainjournal/view/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"

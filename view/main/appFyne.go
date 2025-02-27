@@ -2,10 +2,10 @@ package fyneview
 
 import (
 	"database/sql"
-	"mainjournal/applications/fixact"
 	dataApp "mainjournal/model"
+	"mainjournal/view/fixact"
 
-	fyneview_utils "mainjournal/view/fyneview/utils"
+	fyneview_utils "mainjournal/view/utils"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/app"

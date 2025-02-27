@@ -4,7 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
-	fyneview_utils "mainjournal/view/fyneview/utils"
+	fyneview_utils "mainjournal/view/utils"
 
 	_ "github.com/mattn/go-sqlite3"
 )

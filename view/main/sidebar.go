@@ -1,9 +1,9 @@
 package fyneview
 
 import (
-	"mainjournal/applications/app2"
-	"mainjournal/applications/fixact"
-	settingapp "mainjournal/applications/setting_app"
+	"mainjournal/view/app2"
+	"mainjournal/view/fixact"
+	settingapp "mainjournal/view/setting_app"
 
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
