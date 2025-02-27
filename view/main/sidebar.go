@@ -26,7 +26,7 @@ func createSideBar() *fyne.Container {
 }
 
 func showApp2() {
-	g_v.splitGlobal.Trailing = app2.NewApp()
+	g_v.splitGlobal.Trailing = app2.CreateContentApp2()
 	g_v.w.Resize(fyne.NewSize(480, 300))
 	//g_v.w.SetFixedSize(false)
 	g_v.splitGlobal.Refresh()
