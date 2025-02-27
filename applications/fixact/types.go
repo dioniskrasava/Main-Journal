@@ -1,7 +1,7 @@
 package fixact
 
 import (
-	"fyne.io/fyne/v2/widget"
+	fyneview_utils "mainjournal/view/fyneview/utils"
 )
 
 const (
@@ -18,17 +18,7 @@ type Activity struct {
 	Comment   string
 }
 
-// структура виджетов микроприложения
-type Widgets struct {
-	activityType *widget.Select
-	startTime    *widget.Entry
-	endTime      *widget.Entry
-	totalTime    *widget.Entry
-	comment      *widget.Entry
-	addButton    *widget.Button
-}
-
-var widgtsApp Widgets = Widgets{} // виджеты FixAct
+var widgtsApp fyneview_utils.WidgetsFixact = fyneview_utils.WidgetsFixact{} // виджеты FixAct
 var appFieldVal = Activity{}
 
 // ПЕРЕМЕННАЯ БАЗЫ ДАННЫХ ГЛОБАЛЬНАЯ НА УРОВНЕ ПАКЕТА - ВОЗМОЖНО ЭТО НЕ ПРАВИЛЬНО

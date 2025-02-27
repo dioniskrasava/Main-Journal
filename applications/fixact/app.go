@@ -21,7 +21,7 @@ func NewApp(db *sql.DB) fyne.CanvasObject {
 
 func OldApp(db *sql.DB) fyne.CanvasObject {
 	maindb = db
-	content := createInterfaceApp(db)
+	content := createOldInterfaceApp(db)
 	writeFieldApp(widgtsApp) // записываем последние значения
 	return content
 }

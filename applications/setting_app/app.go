@@ -18,7 +18,7 @@ func NewApp(a fyne.App) *fyne.Container {
 	contButThem := container.NewCenter(container.NewHBox(buttLightTheme, buttDarkTheme))
 
 	labelLang := widget.NewLabel("Языки:")
-	buttEng := widget.NewButton("Английский", func() {})
+	buttEng := widget.NewButton("Английский", func() { fyneview_utils.SetEnglishLangFixact() })
 	buttRus := widget.NewButton("Русский", func() {})
 	contButLang := container.NewCenter(container.NewHBox(buttEng, buttRus))
 

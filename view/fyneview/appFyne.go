@@ -49,7 +49,7 @@ func App() {
 	g_v.splitGlobal = container.NewHSplit(leftContApp, rightContApp)
 
 	// Отдаем глобальный объект окна приложения в другой пакет
-	fyneview_utils.GetMainAppContainer(g_v.splitGlobal) // ВАЖНЫЙ МОМЕНТ !!!
+	fyneview_utils.ExportMainAppContainer(g_v.splitGlobal) // ВАЖНЫЙ МОМЕНТ !!!
 
 	g_v.splitGlobal.SetOffset(0.01) // Устанавливаем разделитель в середину
 	g_v.w.SetContent(g_v.splitGlobal)

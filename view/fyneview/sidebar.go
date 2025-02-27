@@ -1,7 +1,6 @@
 package fyneview
 
 import (
-	"log"
 	"mainjournal/applications/app2"
 	"mainjournal/applications/fixact"
 	settingapp "mainjournal/applications/setting_app"
@@ -35,11 +34,11 @@ func showApp2() {
 
 func showFixact() {
 	if !g_f.beginFixAct {
-		log.Println("ОТРИСОВАЛИ НОВОЕ ОКНО")
+		//log.Println("ОТРИСОВАЛИ НОВОЕ ОКНО")
 		g_v.splitGlobal.Trailing = fixact.NewApp(g_v.db)
 		g_f.beginFixAct = true
 	} else {
-		log.Println("ОТРИСОВАЛИ СТАРОЕ ОКНО")
+		//log.Println("ОТРИСОВАЛИ СТАРОЕ ОКНО")
 		g_v.splitGlobal.Trailing = fixact.OldApp(g_v.db)
 	}
 

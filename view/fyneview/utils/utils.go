@@ -1,6 +1,8 @@
 package fyneview_utils
 
 import (
+	"fmt"
+
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
@@ -22,7 +24,7 @@ func SetDarkTheme(a fyne.App) {
 // и рисовать на нём всякие непристойности
 // в других пакетах (которые к сожалению импортируются из главного view/fyneview и поэтому
 // мы вынуждены работать через посредника)
-func GetMainAppContainer(cont *container.Split) {
+func ExportMainAppContainer(cont *container.Split) {
 	containerSplitMainApp = cont
 }
 
@@ -37,4 +39,22 @@ func DrawMainAppCont(side string, cont *fyne.Container) {
 		containerSplitMainApp.Refresh()
 	}
 
+}
+
+func SetEnglishLangFixact() {
+	fmt.Println("ENG")
+
+	widgetsFixact.ActivityType.PlaceHolder = "Select activites"
+
+	widgetsFixact.LabelTypeActivity.SetText("Type activites : ")
+	widgetsFixact.LabelStartTime.SetText("Start time : ")
+	widgetsFixact.LabelEndTime.SetText("End time : ")
+	widgetsFixact.LabelTotalTime.SetText("Total time : ")
+	widgetsFixact.LabelNameComment.SetText("Comment : ")
+
+	// НУЖНО СКИНУТЬ В ПРОКЛАДКУ СТРУКТУРУ ВИДЖЕТОВ ФИКСАКТА
+}
+
+func ExportWidgetsFixact(widgets WidgetsFixact) {
+	widgetsFixact = widgets // записываем полученные виджеты приложения в глоб.перем.
 }

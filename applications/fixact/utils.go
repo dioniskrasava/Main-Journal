@@ -2,7 +2,6 @@ package fixact
 
 import (
 	"fmt"
-	"log"
 	fyneview_utils "mainjournal/view/fyneview/utils"
 
 	"fyne.io/fyne/v2"
@@ -12,36 +11,36 @@ import (
 
 // возвращает значения полей приложения
 // в виде кастомной структуры Activity
-func readFieldApp(w Widgets) Activity {
+func readFieldApp(w fyneview_utils.WidgetsFixact) Activity {
 	activity := Activity{
-		Type:      w.activityType.Selected,
-		StartTime: w.startTime.Text,
-		EndTime:   w.endTime.Text,
-		TotalTime: w.totalTime.Text,
-		Comment:   w.comment.Text,
+		Type:      w.ActivityType.Selected,
+		StartTime: w.StartTime.Text,
+		EndTime:   w.EndTime.Text,
+		TotalTime: w.TotalTime.Text,
+		Comment:   w.Comment.Text,
 	}
 	return activity
 }
 
 // очистить поля приложения
 // вызывается после добавления активности в базу
-func cleanFielApp(w Widgets) {
-	w.activityType.SetSelected("")
-	w.startTime.SetText("")
-	w.endTime.SetText("")
-	w.totalTime.SetText("")
-	w.comment.SetText("")
+func cleanFielApp(w fyneview_utils.WidgetsFixact) {
+	w.ActivityType.SetSelected("")
+	w.StartTime.SetText("")
+	w.EndTime.SetText("")
+	w.TotalTime.SetText("")
+	w.Comment.SetText("")
 }
 
 // записывает значения глобальной переменной
 // в поля приложения
-func writeFieldApp(w Widgets) {
-	log.Println(appFieldVal)
-	w.activityType.SetSelected(appFieldVal.Type)
-	w.startTime.SetText(appFieldVal.StartTime)
-	w.endTime.SetText(appFieldVal.EndTime)
-	w.totalTime.SetText(appFieldVal.TotalTime)
-	w.comment.SetText(appFieldVal.Comment)
+func writeFieldApp(w fyneview_utils.WidgetsFixact) {
+	//log.Println(appFieldVal) // для теста
+	w.ActivityType.SetSelected(appFieldVal.Type)
+	w.StartTime.SetText(appFieldVal.StartTime)
+	w.EndTime.SetText(appFieldVal.EndTime)
+	w.TotalTime.SetText(appFieldVal.TotalTime)
+	w.Comment.SetText(appFieldVal.Comment)
 }
 
 func drawTheSettingsWindow() {

@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	fyneview_utils "mainjournal/view/fyneview/utils"
 
 	_ "github.com/mattn/go-sqlite3"
 )
@@ -25,7 +26,7 @@ func createTableInDB(db *sql.DB) {
 	}
 }
 
-func addAct(w Widgets, db *sql.DB) {
+func addAct(w fyneview_utils.WidgetsFixact, db *sql.DB) {
 	activity := readFieldApp(w)
 
 	// Вставка данных в базу данных
