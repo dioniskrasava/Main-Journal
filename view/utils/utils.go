@@ -1,8 +1,6 @@
 package fyneview_utils
 
 import (
-	"fmt"
-
 	"fyne.io/fyne/v2"
 	"fyne.io/fyne/v2/container"
 	"fyne.io/fyne/v2/theme"
@@ -42,17 +40,25 @@ func DrawMainAppCont(side string, cont *fyne.Container) {
 }
 
 func SetEnglishLangFixact() {
-	fmt.Println("ENG")
-
 	widgetsFixact.ActivityType.PlaceHolder = "Select activites"
-
-	widgetsFixact.LabelTypeActivity.SetText("Type activites : ")
-	widgetsFixact.LabelStartTime.SetText("Start time : ")
-	widgetsFixact.LabelEndTime.SetText("End time : ")
-	widgetsFixact.LabelTotalTime.SetText("Total time : ")
-	widgetsFixact.LabelNameComment.SetText("Comment : ")
+	widgetsFixact.LabelTypeActivity.SetText("Type activites  : ")
+	widgetsFixact.LabelStartTime.SetText("Start time  : ")
+	widgetsFixact.LabelEndTime.SetText("End time  : ")
+	widgetsFixact.LabelTotalTime.SetText("Total time  : ")
+	widgetsFixact.LabelNameComment.SetText("Comment  : ")
+	widgetsFixact.AddButton.SetText("Add activites")
 
 	// НУЖНО СКИНУТЬ В ПРОКЛАДКУ СТРУКТУРУ ВИДЖЕТОВ ФИКСАКТА
+}
+
+func SetRussianLangFixact() {
+	widgetsFixact.ActivityType.PlaceHolder = "Выберите активность"
+	widgetsFixact.LabelTypeActivity.SetText("Тип активности  : ")
+	widgetsFixact.LabelStartTime.SetText("Время начала  : ")
+	widgetsFixact.LabelEndTime.SetText("Время окончания  : ")
+	widgetsFixact.LabelTotalTime.SetText("Общее время  : ")
+	widgetsFixact.LabelNameComment.SetText("Комментарий  : ")
+	widgetsFixact.AddButton.SetText("Добавить активность")
 }
 
 func ExportWidgetsFixact(widgets WidgetsFixact) {

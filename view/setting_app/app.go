@@ -19,7 +19,7 @@ func NewApp(a fyne.App) *fyne.Container {
 
 	labelLang := widget.NewLabel("Языки:")
 	buttEng := widget.NewButton("Английский", func() { fyneview_utils.SetEnglishLangFixact() })
-	buttRus := widget.NewButton("Русский", func() {})
+	buttRus := widget.NewButton("Русский", func() { fyneview_utils.SetRussianLangFixact() })
 	contButLang := container.NewCenter(container.NewHBox(buttEng, buttRus))
 
 	cont := container.NewVBox(nameApplicationLabel, contButThem, labelLang, contButLang)
